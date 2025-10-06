@@ -1,7 +1,24 @@
 import { Card } from "@/components/ui/card";
-import { GraduationCap, Award, ExternalLink } from "lucide-react";
+import { GraduationCap, Award, ExternalLink, School } from "lucide-react";
 
 const Education = () => {
+  const schools = [
+    {
+      name: "Sri Vignesh Vidhyalaya Mat. Hr. Sec. School",
+      location: "Chrompet, Chennai",
+      degree: "Higher Secondary (XII)",
+      period: "2020 - 2022",
+      percentage: "94.5%"
+    },
+    {
+      name: "Sri Vignesh Vidhyalaya Mat. Hr. Sec. School",
+      location: "Chrompet, Chennai",
+      degree: "Secondary (X)",
+      period: "2019 - 2020",
+      percentage: "95.8%"
+    }
+  ];
+
   const certifications = [
     {
       category: "NPTEL (Honors)",
@@ -52,23 +69,23 @@ const Education = () => {
         </div>
 
         {/* Education */}
-        <div className="max-w-4xl mx-auto mb-16">
-          <Card className="p-8 gradient-card transition-smooth hover:shadow-xl">
+        <div className="max-w-4xl mx-auto mb-16 space-y-6">
+          <Card className="p-8 gradient-card transition-all duration-500 hover:shadow-2xl hover:scale-[1.02] group glow-effect">
             <div className="flex items-start gap-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 flex-shrink-0">
-                <GraduationCap className="text-primary" size={32} />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 flex-shrink-0 transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-12">
+                <GraduationCap className="text-primary transition-transform duration-500" size={32} />
               </div>
               <div className="flex-grow">
-                <h3 className="text-2xl font-heading font-bold mb-2">
+                <h3 className="text-2xl font-heading font-bold mb-2 transition-colors duration-300 group-hover:text-primary">
                   Bachelor of Engineering in Computer Science
                 </h3>
-                <p className="text-lg text-muted-foreground mb-1">
+                <p className="text-lg text-muted-foreground mb-1 transition-all duration-300 group-hover:text-foreground">
                   Sri Sairam Engineering College, West Tambaram, Chennai
                 </p>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-muted-foreground mb-4 transition-all duration-300 group-hover:text-primary">
                   Graduating March 2026
                 </p>
-                <div className="inline-block px-4 py-2 bg-primary/10 rounded-lg">
+                <div className="inline-block px-4 py-2 bg-primary/10 rounded-lg transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-105">
                   <span className="text-2xl font-bold text-primary">
                     8.74 / 10.0
                   </span>
@@ -79,6 +96,40 @@ const Education = () => {
               </div>
             </div>
           </Card>
+
+          {schools.map((school, index) => (
+            <Card 
+              key={index} 
+              className="p-6 gradient-card transition-all duration-500 hover:shadow-xl hover:scale-[1.02] hover:shadow-primary/20 group animate-slide-up"
+              style={{ animationDelay: `${(index + 1) * 150}ms` }}
+            >
+              <div className="flex items-start gap-4">
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 flex-shrink-0 transition-all duration-500 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-12">
+                  <School className="text-primary transition-transform duration-500" size={24} />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-heading font-bold mb-1 transition-colors duration-300 group-hover:text-primary">
+                    {school.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-2 transition-all duration-300 group-hover:text-foreground">
+                    {school.location}
+                  </p>
+                  <p className="text-sm font-semibold text-foreground mb-2 transition-all duration-300 group-hover:text-primary">
+                    {school.degree}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+                    <span className="transition-all duration-300 group-hover:text-primary">{school.period}</span>
+                    <span>•</span>
+                    <div className="inline-block px-3 py-1 bg-primary/10 rounded-md transition-all duration-300 group-hover:bg-primary/20 group-hover:scale-105">
+                      <span className="font-bold text-primary">
+                        {school.percentage}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
         </div>
 
         {/* Certifications */}

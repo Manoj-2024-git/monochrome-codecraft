@@ -23,13 +23,7 @@ const Hero = () => {
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center space-y-6 animate-slide-up">
-          <div className="inline-block">
-            <span className="text-sm font-medium tracking-wider text-muted-foreground uppercase">
-              Welcome to my portfolio
-            </span>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-foreground">
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold bg-gradient-to-r from-primary via-accent-foreground to-primary bg-clip-text text-transparent transition-all duration-700 hover:scale-105">
             G. MANOJ
           </h1>
           
