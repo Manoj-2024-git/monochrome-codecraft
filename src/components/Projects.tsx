@@ -71,59 +71,69 @@ const Projects = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
-            <Card
+            <a
               key={index}
-              className="p-6 gradient-card transition-smooth hover:scale-105 hover:shadow-2xl group"
+              href="https://drive.google.com/drive/folders/1Q-0D3HGAT5hWrZwTAhO3SQnmVuQUYL1b?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block group"
             >
-              <div className="space-y-4">
-                <div>
-                  {project.award && (
-                    <div className="flex items-center gap-2 text-sm text-primary mb-2">
-                      <Award size={16} />
-                      <span className="font-semibold">{project.award}</span>
-                    </div>
-                  )}
-                  {project.conference && (
-                    <div className="text-sm text-muted-foreground mb-2">
-                      {project.conference}
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-heading font-bold group-hover:text-primary transition-smooth">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-muted-foreground">
-                    {project.period}
+              <Card className="p-6 gradient-card transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/30 cursor-pointer h-full">
+                <div className="space-y-4">
+                  <div>
+                    {project.award && (
+                      <div className="flex items-center gap-2 text-sm text-primary mb-2 group-hover:scale-105 transition-transform duration-300">
+                        <Award size={16} className="group-hover:rotate-12 transition-transform duration-300" />
+                        <span className="font-semibold">{project.award}</span>
+                      </div>
+                    )}
+                    {project.conference && (
+                      <div className="text-sm text-muted-foreground mb-2 group-hover:text-foreground transition-colors duration-300">
+                        {project.conference}
+                      </div>
+                    )}
+                    <h3 className="text-2xl font-heading font-bold group-hover:text-primary transition-all duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground group-hover:text-foreground transition-colors duration-300">
+                      {project.period}
+                    </p>
+                  </div>
+
+                  <p className="text-foreground leading-relaxed group-hover:text-foreground/90 transition-colors duration-300">
+                    {project.description}
                   </p>
-                </div>
 
-                <p className="text-foreground leading-relaxed">
-                  {project.description}
-                </p>
+                  <div className="space-y-2">
+                    <h4 className="font-semibold text-sm group-hover:text-primary transition-colors duration-300">Key Achievements:</h4>
+                    <ul className="space-y-1">
+                      {project.achievements.map((achievement, i) => (
+                        <li key={i} className="text-sm text-muted-foreground flex items-start group-hover:text-foreground transition-colors duration-300">
+                          <span className="mr-2">•</span>
+                          <span>{achievement}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
 
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-sm">Key Achievements:</h4>
-                  <ul className="space-y-1">
-                    {project.achievements.map((achievement, i) => (
-                      <li key={i} className="text-sm text-muted-foreground flex items-start">
-                        <span className="mr-2">•</span>
-                        <span>{achievement}</span>
-                      </li>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 text-xs bg-primary/10 rounded-full group-hover:bg-primary/20 group-hover:scale-105 transition-all duration-300"
+                      >
+                        {tech}
+                      </span>
                     ))}
-                  </ul>
-                </div>
+                  </div>
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="px-3 py-1 text-xs bg-primary/10 rounded-full"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                  <div className="mt-4 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                    <ExternalLink size={12} />
+                    <span>View project details</span>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </a>
           ))}
         </div>
       </div>

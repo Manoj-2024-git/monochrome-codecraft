@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { GraduationCap, Award } from "lucide-react";
+import { GraduationCap, Award, ExternalLink } from "lucide-react";
 
 const Education = () => {
   const certifications = [
@@ -85,28 +85,37 @@ const Education = () => {
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-3 gap-6">
             {certifications.map((cert, index) => (
-              <Card
+              <a
                 key={index}
-                className="p-6 glass-effect transition-smooth hover:scale-105"
+                href="https://drive.google.com/drive/folders/1EnIqMWUk_luYC-ye7aqnMtOmcyKdmOiO?usp=drive_link"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block group"
               >
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                  <Award className="text-primary" size={24} />
-                </div>
-                <h3 className="text-xl font-heading font-semibold mb-4">
-                  {cert.category}
-                </h3>
-                <ul className="space-y-2">
-                  {cert.courses.map((course, i) => (
-                    <li
-                      key={i}
-                      className="text-sm text-muted-foreground flex items-start"
-                    >
-                      <span className="mr-2 mt-1.5 w-1 h-1 bg-primary rounded-full flex-shrink-0"></span>
-                      <span>{course}</span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
+                <Card className="p-6 glass-effect transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20 cursor-pointer">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-all duration-300 group-hover:scale-110">
+                    <Award className="text-primary transition-transform duration-300 group-hover:rotate-12" size={24} />
+                  </div>
+                  <h3 className="text-xl font-heading font-semibold mb-4 group-hover:text-primary transition-colors duration-300">
+                    {cert.category}
+                  </h3>
+                  <ul className="space-y-2">
+                    {cert.courses.map((course, i) => (
+                      <li
+                        key={i}
+                        className="text-sm text-muted-foreground flex items-start group-hover:text-foreground transition-colors duration-300"
+                      >
+                        <span className="mr-2 mt-1.5 w-1 h-1 bg-primary rounded-full flex-shrink-0 group-hover:scale-150 transition-transform duration-300"></span>
+                        <span>{course}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-4 text-xs text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-1">
+                    <ExternalLink size={12} />
+                    <span>View certificates</span>
+                  </div>
+                </Card>
+              </a>
             ))}
           </div>
         </div>
